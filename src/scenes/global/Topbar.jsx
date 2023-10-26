@@ -10,9 +10,14 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Topbar = () => {
-    return(
-        <Box display="flex" justifyContent="space-between" p={2}>
-            <Box
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const colorMode = useContext(ColorModeContext);
+
+  return (
+    <Box display="flex" justifyContent="space-between" p={2}>
+      {/* SEARCH BAR */}
+      <Box
         display="flex"
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
@@ -21,7 +26,9 @@ const Topbar = () => {
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
-      </Box> 
+      </Box>
+
+      {/* ICONS */}
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
@@ -40,8 +47,8 @@ const Topbar = () => {
           <PersonOutlinedIcon />
         </IconButton>
       </Box>
-        </Box>
-    );
+    </Box>
+  );
 };
 
 export default Topbar;
